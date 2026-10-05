@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FitZone es el gimnasio profesional para superar el sedentarismo y ganar fuerza con clases presenciales, cursos de rendimiento y asesoría técnica garantizada.">
+  <title>FitZone Gym | Gimnasio Profesional y Clases Presenciales</title>
+
+  <!-- Google Fonts: Outfit (Títulos) y Plus Jakarta Sans (Texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Hoja de estilos externa -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ========================================================================== -->
+  <!-- 1. HEADER Y NAVEGACIÓN -->
+  <!-- ========================================================================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <!-- Logo / Marca -->
+      <a href="#hero" class="brand-link" aria-label="FitZone Gym - Ir al inicio">
+        <span class="brand-icon" aria-hidden="true">⚡</span>
+        <span>FitZone <span class="brand-accent">Gym</span></span>
+      </a>
+
+      <!-- Menú de navegación con enlaces ancla -->
+      <nav class="main-navigation" aria-label="Navegación principal">
+        <a href="#beneficios" class="nav-link">Beneficios</a>
+        <a href="#testimonios" class="nav-link">Testimonios</a>
+        <a href="#clases" class="nav-link">Clases y Cursos</a>
+        <a href="#registro" class="nav-link">Registro</a>
+      </nav>
+
+      <!-- Botón CTA secundario & Alternador de tema -->
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Cambiar a modo oscuro" aria-pressed="false">🌙</button>
+        <a href="#registro" class="btn-secondary">Agendar Evaluación</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========================================================================== -->
+    <!-- 2. SECCIÓN HERO -->
+    <!-- ========================================================================== -->
+    <section id="hero" class="hero animate-on-scroll" aria-labelledby="hero-title">
+      <!-- Imagen de fondo optimizada con superposición oscura para contraste -->
+      <div class="hero-backdrop" aria-hidden="true">
+        <img src="assets/images/hero-gimnasio-fitzone.jpg" alt="Instalaciones de entrenamiento moderno en gimnasio profesional FitZone" class="hero-img">
+        <div class="hero-scrim"></div>
+      </div>
+
+      <div class="container">
+        <div class="hero-content">
+          <span class="section-tag">Gimnasio de Alto Rendimiento</span>
+          
+          <!-- Único H1 de la landing page -->
+          <h1 id="hero-title">Entrena con precisión en 45 minutos y recupera la energía que tu trabajo te quita</h1>
+
+          <!-- Subtítulo -->
+          <p class="hero-subtitle">Clases presenciales de élite y cursos estructurados con aforo limitado para profesionales que exigen resultados sin perder tiempo.</p>
+
+          <!-- Descripción breve (23 palabras - máximo 30 palabras) -->
+          <p class="hero-description">Supera el sedentarismo y construye un cuerpo ágil con rutinas de 45 minutos, supervisión técnica continua y horarios diseñados para tu ritmo de trabajo.</p>
+
+          <!-- Botón CTA principal -->
+          <a href="#registro" class="btn-primary">
+            <span>Comienza tu transformación ahora: cupos limitados para esta semana</span>
+            <span aria-hidden="true">→</span>
+          </a>
+
+          <!-- Estadísticas dinámicas con data-target -->
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-counter" data-target="1500" data-suffix="+">0</span>
+              <span class="stat-label">Miembros Activos</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-counter" data-target="100" data-suffix="%">0</span>
+              <span class="stat-label">Coaching Certificado</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-counter" data-target="18" data-prefix="Máx. ">0</span>
+              <span class="stat-label">Cupos por Sala</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================== -->
+    <!-- 3. SECCIÓN BENEFICIOS -->
+    <!-- ========================================================================== -->
+    <section id="beneficios" class="beneficios animate-on-scroll" aria-labelledby="beneficios-title">
+      <div class="container">
+        <span class="section-tag">Propuesta de Valor</span>
+        <h2 id="beneficios-title" class="section-heading">Por Qué FitZone Transforma Tu Rendimiento en Cada Sesión</h2>
+        <p class="section-desc">Metodología biomecánica y organización milimétrica para que cada minuto rinda frutos medibles.</p>
+
+        <div class="benefits-grid">
+          <!-- Beneficio 1 -->
+          <article class="benefit-card">
+            <span class="benefit-emoji" role="img" aria-label="Diana de precisión">🎯</span>
+            <h3>Supera el sedentarismo con técnica asistida</h3>
+            <p>Entrena con biomecánica corregida en tiempo real y evita lesiones articulares desde tu primera sesión.</p>
+          </article>
+
+          <!-- Beneficio 2 -->
+          <article class="benefit-card">
+            <span class="benefit-emoji" role="img" aria-label="Cronómetro">⏱️</span>
+            <h3>Optimiza tu agenda con horarios extendidos</h3>
+            <p>Reserva franjas flexibles de 06:00 a 22:00 y mantén tu constancia sin descuidar tus reuniones laborales.</p>
+          </article>
+
+          <!-- Beneficio 3 -->
+          <article class="benefit-card">
+            <span class="benefit-emoji" role="img" aria-label="Gráfica de crecimiento">📈</span>
+            <h3>Construye fuerza magra con progresión medible</h3>
+            <p>Registra cargas y evolución corporal con métricas periódicas para asegurar resultados tangibles en menos tiempo.</p>
+          </article>
+
+          <!-- Beneficio 4 -->
+          <article class="benefit-card">
+            <span class="benefit-emoji" role="img" aria-label="Escudo protector">🛡️</span>
+            <h3>Recupera tu movilidad y elimina dolores</h3>
+            <p>Desbloquea cuello y espalda con ejercicios posturales que devuelven vitalidad a tu jornada laboral.</p>
+          </article>
+
+          <!-- Beneficio 5 -->
+          <article class="benefit-card">
+            <span class="benefit-emoji" role="img" aria-label="Rayo de energía">⚡</span>
+            <h3>Maximiza tu rendimiento en espacios exclusivos</h3>
+            <p>Entrena sin aglomeraciones ni esperas gracias a nuestro aforo limitado a 18 cupos por sala.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================== -->
+    <!-- 4. SECCIÓN TESTIMONIOS -->
+    <!-- ========================================================================== -->
+    <section id="testimonios" class="testimonios animate-on-scroll" aria-labelledby="testimonios-title">
+      <div class="container">
+        <span class="section-tag">Historias de Éxito</span>
+        <h2 id="testimonios-title" class="section-heading">Profesionales Reales Que Ya Transformaron Su Rutina</h2>
+        <p class="section-desc">Resultados documentados de miembros que superaron la falta de tiempo y las molestias posturales.</p>
+
+        <div class="testimonials-grid">
+          <!-- Testimonio 1 -->
+          <article class="testimonial-card">
+            <blockquote class="testimonial-quote">
+              <p>«Paso más de 9 horas frente al computador y vivía con dolores lumbares continuos. En solo dos meses combinando funcional y el curso de fuerza, eliminé el dolor, bajé 5 kilos y recuperé mi energía diaria. La puntualidad y el profesionalismo de los coaches son excepcionales.»</p>
+            </blockquote>
+            <div class="testimonial-author">
+              <h3 class="author-name">Mariana Vega</h3>
+              <p class="author-city">Bogotá · Miembro Activo</p>
+            </div>
+          </article>
+
+          <!-- Testimonio 2 -->
+          <article class="testimonial-card">
+            <blockquote class="testimonial-quote">
+              <p>«Mi mayor objeción era no tener tiempo para ser constante. En FitZone las sesiones de 45 minutos van directo al grano, sin esperar por máquinas ni rutinas genéricas. He ganado 4 kilos de masa muscular y mi postura mejoró drásticamente.»</p>
+            </blockquote>
+            <div class="testimonial-author">
+              <h3 class="author-name">Roberto Salcedo</h3>
+              <p class="author-city">Medellín · Miembro Activo</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================== -->
+    <!-- 5. SECCIÓN CLASES Y CURSOS (SIMULACIÓN DE VIDEO SIN SÍMBOLO PLAY) -->
+    <!-- ========================================================================== -->
+    <section id="clases" class="clases animate-on-scroll" aria-labelledby="clases-title">
+      <div class="container">
+        <span class="section-tag">Oferta Deportiva</span>
+        <h2 id="clases-title" class="section-heading">Clases Presenciales y Cursos de Especialización</h2>
+        <p class="section-desc">Sesiones dirigidas y programas estructurados con captura fotográfica de atmósfera en vivo.</p>
+
+        <div class="cards-grid">
+          <!-- Tarjeta 1: Spinning -->
+          <article class="class-card">
+            <div class="video-preview-wrapper">
+              <img src="assets/images/clase-spinning-grupal.jpg" alt="Sesión de ciclismo indoor grupal en estudio climatizado" class="class-img">
+              <span class="camera-frame-tl" aria-hidden="true"></span>
+              <span class="camera-frame-tr" aria-hidden="true"></span>
+              <span class="camera-frame-bl" aria-hidden="true"></span>
+              <span class="camera-frame-br" aria-hidden="true"></span>
+              <div class="video-badge-top" aria-hidden="true">
+                <span class="rec-dot"></span>
+                <span>EN VIVO · STUDIO 4K</span>
+              </div>
+              <div class="video-badge-bottom" aria-hidden="true">45 MIN · SESIÓN 4K</div>
+              <div class="video-timeline" aria-hidden="true"><div class="video-timeline-progress"></div></div>
+            </div>
+            <div class="class-content">
+              <div class="class-meta">
+                <span class="class-level">Nivel: Avanzado</span>
+                <span>Clase Presencial</span>
+              </div>
+              <h3>Spinning Pro Studio</h3>
+              <p class="class-phrase">«Quema calorías y eleva tu potencia cardiovascular pedaleando al ritmo de tus vatios.»</p>
+              <p class="class-schedule"><strong>Horario:</strong> Lunes a Viernes · 06:30 y 19:00</p>
+            </div>
+          </article>
+
+          <!-- Tarjeta 2: Funcional HIIT -->
+          <article class="class-card">
+            <div class="video-preview-wrapper">
+              <img src="assets/images/entrenamiento-funcional-hiit.jpg" alt="Entrenador guiando sesión de ejercicio funcional con pesas rusas" class="class-img">
+              <span class="camera-frame-tl" aria-hidden="true"></span>
+              <span class="camera-frame-tr" aria-hidden="true"></span>
+              <span class="camera-frame-bl" aria-hidden="true"></span>
+              <span class="camera-frame-br" aria-hidden="true"></span>
+              <div class="video-badge-top" aria-hidden="true">
+                <span class="rec-dot"></span>
+                <span>EN VIVO · STUDIO 4K</span>
+              </div>
+              <div class="video-badge-bottom" aria-hidden="true">45 MIN · SESIÓN 4K</div>
+              <div class="video-timeline" aria-hidden="true"><div class="video-timeline-progress"></div></div>
+            </div>
+            <div class="class-content">
+              <div class="class-meta">
+                <span class="class-level">Nivel: Intermedio</span>
+                <span>Clase Presencial</span>
+              </div>
+              <h3>Functional Athletic HIIT</h3>
+              <p class="class-phrase">«Desarrolla fuerza funcional, agilidad y quema metabólica en circuitos intensos de 45 minutos.»</p>
+              <p class="class-schedule"><strong>Horario:</strong> Lunes, Miércoles y Viernes · 08:00 y 18:30</p>
+            </div>
+          </article>
+
+          <!-- Tarjeta 3: Yoga & Movilidad -->
+          <article class="class-card">
+            <div class="video-preview-wrapper">
+              <img src="assets/images/clase-yoga-movilidad.jpg" alt="Grupo realizando postura mindful de yoga en piso de madera natural" class="class-img">
+              <span class="camera-frame-tl" aria-hidden="true"></span>
+              <span class="camera-frame-tr" aria-hidden="true"></span>
+              <span class="camera-frame-bl" aria-hidden="true"></span>
+              <span class="camera-frame-br" aria-hidden="true"></span>
+              <div class="video-badge-top" aria-hidden="true">
+                <span class="rec-dot"></span>
+                <span>EN VIVO · STUDIO 4K</span>
+              </div>
+              <div class="video-badge-bottom" aria-hidden="true">50 MIN · SESIÓN 4K</div>
+              <div class="video-timeline" aria-hidden="true"><div class="video-timeline-progress"></div></div>
+            </div>
+            <div class="class-content">
+              <div class="class-meta">
+                <span class="class-level">Nivel: Principiante</span>
+                <span>Clase Presencial</span>
+              </div>
+              <h3>Yoga & Dynamic Mobility</h3>
+              <p class="class-phrase">«Descomprime tu columna, mejora la flexibilidad y desconecta tu mente del estrés laboral.»</p>
+              <p class="class-schedule"><strong>Horario:</strong> Martes y Jueves · 07:00 / Sábado · 09:00</p>
+            </div>
+          </article>
+
+          <!-- Tarjeta 4: Curso Fuerza & Hipertrofia -->
+          <article class="class-card">
+            <div class="video-preview-wrapper">
+              <img src="assets/images/curso-fuerza-hipertrofia.jpg" alt="Atleta ejecutando levantamiento con barra olímpica en zona de peso libre" class="class-img">
+              <span class="camera-frame-tl" aria-hidden="true"></span>
+              <span class="camera-frame-tr" aria-hidden="true"></span>
+              <span class="camera-frame-bl" aria-hidden="true"></span>
+              <span class="camera-frame-br" aria-hidden="true"></span>
+              <div class="video-badge-top" aria-hidden="true">
+                <span class="rec-dot"></span>
+                <span>DIRECTO · LAB TÉCNICO</span>
+              </div>
+              <div class="video-badge-bottom" aria-hidden="true">60 MIN · MASTERCLASS</div>
+              <div class="video-timeline" aria-hidden="true"><div class="video-timeline-progress"></div></div>
+            </div>
+            <div class="class-content">
+              <div class="class-meta">
+                <span class="class-level">Nivel: Intermedio</span>
+                <span>Curso Estructurado</span>
+              </div>
+              <h3>Curso de Fuerza & Hipertrofia</h3>
+              <p class="class-phrase">«Aprende patrones biomecánicos fundamentales para ganar masa muscular sólida y prevenir lesiones.»</p>
+              <p class="class-schedule"><strong>Horario:</strong> Lunes a Jueves · 19:30</p>
+            </div>
+          </article>
+
+          <!-- Tarjeta 5: Programa Pérdida de Grasa -->
+          <article class="class-card">
+            <div class="video-preview-wrapper">
+              <img src="assets/images/programa-perdida-grasa.jpg" alt="Asesoría de composición corporal y gasto calórico guiado en gimnasio" class="class-img">
+              <span class="camera-frame-tl" aria-hidden="true"></span>
+              <span class="camera-frame-tr" aria-hidden="true"></span>
+              <span class="camera-frame-bl" aria-hidden="true"></span>
+              <span class="camera-frame-br" aria-hidden="true"></span>
+              <div class="video-badge-top" aria-hidden="true">
+                <span class="rec-dot"></span>
+                <span>DIRECTO · LAB TÉCNICO</span>
+              </div>
+              <div class="video-badge-bottom" aria-hidden="true">45 MIN · CLÍNICA</div>
+              <div class="video-timeline" aria-hidden="true"><div class="video-timeline-progress"></div></div>
+            </div>
+            <div class="class-content">
+              <div class="class-meta">
+                <span class="class-level">Nivel: Principiante</span>
+                <span>Curso Estructurado</span>
+              </div>
+              <h3>Programa de Pérdida de Grasa</h3>
+              <p class="class-phrase">«Recompón tu metabolismo con entrenamiento guiado y seguimiento de composición corporal.»</p>
+              <p class="class-schedule"><strong>Horario:</strong> Lunes a Viernes · 07:30 y 18:00</p>
+            </div>
+          </article>
+
+          <!-- Tarjeta 6: Taller Movilidad y Postura -->
+          <article class="class-card">
+            <div class="video-preview-wrapper">
+              <img src="assets/images/taller-movilidad-postural.jpg" alt="Coach kinesiologista demostrando ejercicio correctivo de cadera y escápulas" class="class-img">
+              <span class="camera-frame-tl" aria-hidden="true"></span>
+              <span class="camera-frame-tr" aria-hidden="true"></span>
+              <span class="camera-frame-bl" aria-hidden="true"></span>
+              <span class="camera-frame-br" aria-hidden="true"></span>
+              <div class="video-badge-top" aria-hidden="true">
+                <span class="rec-dot"></span>
+                <span>DIRECTO · LAB TÉCNICO</span>
+              </div>
+              <div class="video-badge-bottom" aria-hidden="true">45 MIN · CORRECCIÓN</div>
+              <div class="video-timeline" aria-hidden="true"><div class="video-timeline-progress"></div></div>
+            </div>
+            <div class="class-content">
+              <div class="class-meta">
+                <span class="class-level">Nivel: Principiante</span>
+                <span>Curso Estructurado</span>
+              </div>
+              <h3>Taller de Movilidad y Postura</h3>
+              <p class="class-phrase">«Corrige vicios posturales de oficina y alivia tensiones crónicas en cuello y cadera.»</p>
+              <p class="class-schedule"><strong>Horario:</strong> Miércoles · 08:30 / Sábado · 11:30</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================== -->
+    <!-- 6. SECCIÓN REGISTRO CON FORMULARIO ACCESIBLE -->
+    <!-- ========================================================================== -->
+    <section id="registro" class="registro animate-on-scroll" aria-labelledby="registro-title">
+      <div class="container">
+        <div class="form-wrapper">
+          <span class="section-tag">Pase de Cortesía</span>
+          <h2 id="registro-title" class="section-heading">Agenda Tu Primera Sesión de Diagnóstico y Entrenamiento</h2>
+          <p class="section-desc">Completa tus datos para emitir tu pase de prueba individual sin costo de inscripción.</p>
+
+          <form id="form-registro" novalidate>
+            <!-- Campo 1: Nombre Completo -->
+            <div class="form-group">
+              <label for="nombre" class="form-label">Nombre Completo *</label>
+              <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Ej. Carlos Mendoza" required autocomplete="name">
+              <span id="error-nombre" class="form-error" aria-live="polite"></span>
+            </div>
+
+            <!-- Campo 2: Correo Electrónico -->
+            <div class="form-group">
+              <label for="email" class="form-label">Correo Electrónico *</label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="carlos.mendoza@empresa.com" required autocomplete="email">
+              <span id="error-email" class="form-error" aria-live="polite"></span>
+            </div>
+
+            <!-- Campo Adicional: Objetivo de Entrenamiento (Select) -->
+            <div class="form-group">
+              <label for="objetivo" class="form-label">Objetivo Principal de Entrenamiento *</label>
+              <select id="objetivo" name="objetivo" class="form-select" required>
+                <option value="fuerza">Ganancia de Fuerza y Masa Magra</option>
+                <option value="grasa">Pérdida de Grasa y Recomposición Corporal</option>
+                <option value="movilidad">Alivio de Dolores Posturales y Movilidad Articular</option>
+                <option value="cardio">Resistencia Cardiovascular y Manejo de Estrés</option>
+              </select>
+              <span id="error-objetivo" class="form-error" aria-live="polite"></span>
+            </div>
+
+            <!-- Checkbox de Términos y Condiciones -->
+            <div class="form-group checkbox-group">
+              <label for="terminos" class="checkbox-label">
+                <input type="checkbox" id="terminos" name="terminos" class="form-checkbox" required>
+                <span>Acepto los términos del servicio y autorizo el tratamiento de mis datos de acuerdo con la <a href="#politica" class="privacy-link">Política de Privacidad</a> de FitZone Gym para coordinar mi pase de cortesía.</span>
+              </label>
+              <span id="error-terminos" class="form-error" aria-live="polite"></span>
+            </div>
+
+            <!-- Botón de Envío -->
+            <button type="submit" class="btn-primary btn-submit">Solicitar Mi Pase Gratuito</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================== -->
+  <!-- 7. FOOTER -->
+  <!-- ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <p>FitZone Gym</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#politica" id="politica">Política de Privacidad</a>
+      </div>
+
+      <div class="footer-copy">
+        <p>© 2026 FitZone Gym. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script JS diferido con lógica de validación accesible y animación -->
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,1025 @@
+/* ==========================================================================
+   FITZONE GYM - SISTEMA DE DISEÑO & HOJA DE ESTILOS CSS3
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. VARIABLES CSS (:root & TEMAS)
+   Paleta: Primario (#F97316), Secundario (#1E293B), Acento (#38BDF8),
+   Fondo (#0B0F17) y Texto (#F8FAFC) - Contraste superior a 4.5:1 (WCAG AA/AAA)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Paleta cromática principal */
+  --color-primary: #F97316;
+  --color-primary-hover: #EA580C;
+  --color-primary-light: rgba(249, 115, 22, 0.15);
+  --color-secondary: #1E293B;
+  --color-secondary-hover: #334155;
+  --color-accent: #38BDF8;
+  --color-accent-dim: rgba(56, 189, 248, 0.12);
+  --color-bg: #0B0F17;
+  --color-bg-alt: #0E1420;
+  --color-surface: #111827;
+  --color-surface-card: #1E293B;
+  --color-surface-hover: #273549;
+  --color-text: #F8FAFC;
+  --color-text-muted: #94A3B8;
+  --color-text-inverted: #0B0F17;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-active: rgba(249, 115, 22, 0.45);
+
+  /* Estados semánticos (Error y Éxito) */
+  --color-error-bg: rgba(244, 63, 94, 0.12);
+  --color-error-border: #F43F5E;
+  --color-error-text: #FDA4AF;
+  --color-success-bg: rgba(16, 185, 129, 0.12);
+  --color-success-border: #10B981;
+  --color-success-text: #6EE7B7;
+
+  /* Tipografías oficiales */
+  --font-title: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-text: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Radios de borde (unidades relativas) */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999rem;
+
+  /* Sombras de elevación */
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 1.5rem rgba(249, 115, 22, 0.3);
+
+  /* Tiempos de transición para microinteracciones */
+  --transition-fast: 180ms ease;
+  --transition-base: 250ms ease;
+  --transition-smooth: 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   TEMA OSCURO EXPLÍCITO / ALTERNANCIA (.dark-theme)
+   Asegura contraste mínimo 4.5:1 en todos los componentes
+   -------------------------------------------------------------------------- */
+.dark-theme {
+  --color-bg: #07090E;
+  --color-bg-alt: #0B0E17;
+  --color-surface: #0F172A;
+  --color-surface-card: #1E293B;
+  --color-surface-hover: #334155;
+  --color-text: #FFFFFF;
+  --color-text-muted: #CBD5E1;
+  --color-border: rgba(255, 255, 255, 0.12);
+  --shadow-md: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   2. RESETEO BASE & TIPOGRAFÍA GLOBAL
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%; /* 16px base para cálculo relativo de rem */
+  scroll-behavior: smooth;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-text);
+  line-height: 1.6;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* --------------------------------------------------------------------------
+   3. ESTADOS DE FOCO VISIBLES Y ACCESIBLES (WCAG AA)
+   -------------------------------------------------------------------------- */
+:focus-visible {
+  outline: 0.1875rem solid var(--color-primary);
+  outline-offset: 0.2rem;
+}
+
+/* Contenedor centralizado */
+.container {
+  width: 100%;
+  max-width: 75rem; /* 1200px */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+/* Encabezados y títulos con Outfit */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  color: var(--color-text);
+  font-weight: 700;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+  font-family: monospace;
+}
+
+.section-heading {
+  font-size: 1.85rem;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.85rem;
+}
+
+.section-desc {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  max-width: 42rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   4. BOTONES & MICROINTERACCIONES (150ms - 400ms)
+   -------------------------------------------------------------------------- */
+/* Botón Principal (Microinteracción de elevación y resplandor) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.85rem;
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-inverted);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-md);
+  box-shadow: 0 0.5rem 1.25rem rgba(249, 115, 22, 0.28);
+  cursor: pointer;
+  border: none;
+  white-space: normal;
+  text-align: center;
+  transition: transform var(--transition-base),
+              box-shadow var(--transition-base),
+              background-color var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-0.15rem);
+  box-shadow: 0 0.75rem 1.75rem rgba(249, 115, 22, 0.42);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 0.25rem 0.75rem rgba(249, 115, 22, 0.3);
+}
+
+/* Botón Secundario */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--color-text);
+  background-color: var(--color-secondary);
+  border: 0.0625rem solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--transition-fast),
+              border-color var(--transition-fast),
+              transform var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-secondary-hover);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-0.0625rem);
+}
+
+/* Botón alternador de tema oscuro / claro */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  border: 0.0625rem solid var(--color-border);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  color: var(--color-text);
+  border-color: var(--color-primary);
+}
+
+/* --------------------------------------------------------------------------
+   5. HEADER STICKY & ESTADO .scrolled
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(11, 15, 23, 0.85);
+  backdrop-filter: blur(0.75rem);
+  -webkit-backdrop-filter: blur(0.75rem);
+  border-bottom: 0.0625rem solid var(--color-border);
+  transition: background-color var(--transition-smooth),
+              box-shadow var(--transition-smooth),
+              border-color var(--transition-smooth);
+}
+
+.site-header.scrolled {
+  background-color: rgba(11, 15, 23, 0.98);
+  box-shadow: var(--shadow-md);
+  border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.5rem;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  font-family: var(--font-title);
+  color: var(--color-text);
+}
+
+.brand-icon {
+  width: 2.125rem;
+  height: 2.125rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-primary-light);
+  border: 0.0625rem solid rgba(249, 115, 22, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  font-size: 1rem;
+}
+
+.brand-accent {
+  color: var(--color-primary);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.main-navigation {
+  display: none; /* Mobile first: oculto en móviles estrechos */
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+.nav-link:hover {
+  color: var(--color-text);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0.125rem;
+  background-color: var(--color-primary);
+  transition: width var(--transition-base);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   6. SECCIÓN HERO (Fondo con Overlay para Contraste Legible)
+   -------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding: 4.5rem 0;
+  border-bottom: 0.0625rem solid var(--color-border);
+  overflow: hidden;
+}
+
+.hero-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.55) contrast(1.1);
+  transform: scale(1.02);
+}
+
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(11, 15, 23, 0.98) 0%,
+    rgba(11, 15, 23, 0.88) 50%,
+    rgba(11, 15, 23, 0.45) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 46rem;
+}
+
+.hero h1 {
+  font-size: 2.15rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #E2E8F0;
+  margin-bottom: 0.85rem;
+  line-height: 1.4;
+}
+
+.hero-description {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* Estadísticas / Contadores Hero */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 0.0625rem solid var(--color-border);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number, .stat-counter {
+  font-family: var(--font-title);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. SECCIÓN BENEFICIOS (Grid de Tarjetas con Elevación)
+   -------------------------------------------------------------------------- */
+.beneficios {
+  padding: 5rem 0;
+  background-color: var(--color-bg);
+  border-bottom: 0.0625rem solid var(--color-border);
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.benefit-card {
+  padding: 2rem;
+  background-color: var(--color-surface);
+  border: 0.0625rem solid var(--color-border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* Microinteracción de elevación 300ms */
+  transition: transform var(--transition-smooth),
+              box-shadow var(--transition-smooth),
+              border-color var(--transition-base);
+}
+
+.benefit-card:hover {
+  transform: translateY(-0.35rem);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-active);
+}
+
+.benefit-emoji {
+  font-size: 2.25rem;
+  margin-bottom: 1.15rem;
+  line-height: 1;
+}
+
+.benefit-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.65rem;
+  line-height: 1.25;
+}
+
+.benefit-card p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
+/* --------------------------------------------------------------------------
+   8. SECCIÓN TESTIMONIOS (Grid de Tarjetas)
+   -------------------------------------------------------------------------- */
+.testimonios {
+  padding: 5rem 0;
+  background-color: var(--color-bg-alt);
+  border-bottom: 0.0625rem solid var(--color-border);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+.testimonial-card {
+  padding: 2.25rem;
+  background-color: var(--color-surface);
+  border: 0.0625rem solid var(--color-border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-0.35rem);
+  box-shadow: var(--shadow-md);
+}
+
+.testimonial-quote {
+  font-size: 0.975rem;
+  font-style: italic;
+  color: #E2E8F0;
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-author {
+  padding-top: 1rem;
+  border-top: 0.0625rem solid var(--color-border);
+}
+
+.author-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.author-city {
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-top: 0.15rem;
+}
+
+/* --------------------------------------------------------------------------
+   9. SECCIÓN CLASES Y CURSOS (Simulación de Video Sin Símbolo Play)
+   -------------------------------------------------------------------------- */
+.clases {
+  padding: 5rem 0;
+  background-color: var(--color-bg);
+  border-bottom: 0.0625rem solid var(--color-border);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+.class-card {
+  background-color: var(--color-surface);
+  border: 0.0625rem solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* Microinteracción de elevación */
+  transition: transform var(--transition-smooth),
+              box-shadow var(--transition-smooth),
+              border-color var(--transition-base);
+}
+
+.class-card:hover {
+  transform: translateY(-0.35rem);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-border-active);
+}
+
+/* Contenedor de aspect-ratio 16:9 con encuadre fotográfico de estudio (Sin Play) */
+.video-preview-wrapper {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  overflow: hidden;
+  background-color: #030712;
+}
+
+.class-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 450ms ease, filter 300ms ease;
+  filter: brightness(0.9) contrast(1.05);
+}
+
+.class-card:hover .class-img {
+  transform: scale(1.05);
+}
+
+/* Brackets de cámara / visor fotográfico en las esquinas */
+.camera-frame-tl, .camera-frame-tr, .camera-frame-bl, .camera-frame-br {
+  position: absolute;
+  width: 0.875rem;
+  height: 0.875rem;
+  pointer-events: none;
+}
+.camera-frame-tl { top: 0.75rem; left: 0.75rem; border-top: 0.125rem solid rgba(255,255,255,0.7); border-left: 0.125rem solid rgba(255,255,255,0.7); }
+.camera-frame-tr { top: 0.75rem; right: 0.75rem; border-top: 0.125rem solid rgba(255,255,255,0.7); border-right: 0.125rem solid rgba(255,255,255,0.7); }
+.camera-frame-bl { bottom: 0.75rem; left: 0.75rem; border-bottom: 0.125rem solid rgba(255,255,255,0.7); border-left: 0.125rem solid rgba(255,255,255,0.7); }
+.camera-frame-br { bottom: 0.75rem; right: 0.75rem; border-bottom: 0.125rem solid rgba(255,255,255,0.7); border-right: 0.125rem solid rgba(255,255,255,0.7); }
+
+/* Insignias de emisión en directo */
+.video-badge-top {
+  position: absolute;
+  top: 0.75rem;
+  left: 2rem;
+  background-color: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(0.25rem);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.65rem;
+  font-weight: 700;
+  font-family: monospace;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 0.0625rem solid rgba(255, 255, 255, 0.15);
+}
+
+.rec-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: var(--radius-full);
+  background-color: #EF4444;
+}
+
+.video-badge-bottom {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 2rem;
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.65rem;
+  font-weight: 700;
+  font-family: monospace;
+  color: var(--color-primary);
+  border: 0.0625rem solid rgba(255, 255, 255, 0.15);
+}
+
+.video-timeline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0.1875rem;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.video-timeline-progress {
+  height: 100%;
+  width: 70%;
+  background: linear-gradient(90deg, #EA580C, var(--color-primary));
+}
+
+.class-content {
+  padding: 1.5rem;
+}
+
+.class-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-muted);
+}
+
+.class-level {
+  font-weight: 700;
+  color: var(--color-accent);
+  font-family: monospace;
+}
+
+.class-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.45rem;
+}
+
+.class-phrase {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 1.15rem;
+}
+
+.class-schedule {
+  font-size: 0.8rem;
+  color: #E2E8F0;
+  padding-top: 0.75rem;
+  border-top: 0.0625rem solid var(--color-border);
+}
+
+/* --------------------------------------------------------------------------
+   10. SECCIÓN REGISTRO & FORMULARIO (Estilos de Error & Éxito Accesibles)
+   -------------------------------------------------------------------------- */
+.registro {
+  padding: 5rem 0;
+  background-color: var(--color-bg-alt);
+  border-bottom: 0.0625rem solid var(--color-border);
+}
+
+.form-wrapper {
+  width: 100%;
+  max-width: 38rem;
+  margin: 0 auto;
+  background-color: var(--color-surface);
+  border: 0.0625rem solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 2rem 1.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.form-group {
+  margin-bottom: 1.35rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #CBD5E1;
+  margin-bottom: 0.45rem;
+}
+
+.form-input, .form-select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background-color: var(--color-bg);
+  border: 0.0625rem solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-size: 0.95rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-input:focus, .form-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.25rem rgba(249, 115, 22, 0.25);
+  outline: none;
+}
+
+/* Estado visual para inputs con error */
+.form-input.input-error, .form-select.input-error {
+  border-color: var(--color-error-border);
+  background-color: rgba(244, 63, 94, 0.04);
+}
+
+/* Mensajes de error accesibles: no solo color, incluye borde, fondo e icono */
+.form-error {
+  display: none;
+  font-size: 0.8rem;
+  color: var(--color-error-text);
+  background-color: var(--color-error-bg);
+  border-left: 0.1875rem solid var(--color-error-border);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.65rem;
+  margin-top: 0.45rem;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.form-error.active, .form-error:not(:empty) {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.form-error:not(:empty)::before {
+  content: '⚠️';
+  font-size: 0.75rem;
+}
+
+/* Checkbox accesible */
+.checkbox-group {
+  margin-bottom: 1.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.825rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+.form-checkbox {
+  margin-top: 0.2rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.privacy-link {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.15rem;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 1.05rem;
+  font-size: 1rem;
+}
+
+/* Tarjeta de Confirmación de Éxito */
+.form-success-card {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: var(--color-success-bg);
+  border: 0.0625rem solid var(--color-success-border);
+  border-radius: var(--radius-lg);
+}
+
+.success-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 auto 1rem;
+  border-radius: var(--radius-full);
+  background-color: rgba(16, 185, 129, 0.2);
+  color: var(--color-success-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.success-title {
+  font-size: 1.5rem;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.success-code {
+  font-family: monospace;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-success-text);
+  margin-bottom: 1rem;
+}
+
+.success-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   11. SECCIÓN FOOTER
+   -------------------------------------------------------------------------- */
+.site-footer {
+  padding: 3rem 0;
+  background-color: #07090E;
+  border-top: 0.0625rem solid var(--color-border);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+}
+
+.footer-brand {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-text);
+}
+
+.footer-links a {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
+.footer-links a:hover {
+  color: var(--color-text);
+}
+
+/* --------------------------------------------------------------------------
+   12. ANIMACIONES ON SCROLL (.animate-on-scroll & .visible)
+   -------------------------------------------------------------------------- */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(1.875rem); /* 30px en rem */
+  transition: opacity var(--transition-slow),
+              transform var(--transition-slow);
+  will-change: opacity, transform;
+}
+
+.animate-on-scroll.visible,
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   13. MEDIA QUERIES RESPONSIVE (ENFOQUE MOBILE-FIRST)
+   Breakpoints: 480px (móvil ancho), 768px (tablet), 1200px (desktop)
+   -------------------------------------------------------------------------- */
+
+/* Breakpoint 1: Móvil extendido (>= 480px) */
+@media (min-width: 30rem) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .form-wrapper {
+    padding: 2.5rem;
+  }
+
+  .btn-primary {
+    white-space: nowrap;
+  }
+}
+
+/* Breakpoint 2: Tablet (>= 768px) */
+@media (min-width: 48rem) {
+  .section-heading {
+    font-size: 2.25rem;
+  }
+
+  .main-navigation {
+    display: flex;
+  }
+
+  .hero {
+    min-height: 85vh;
+    padding: 6rem 0;
+  }
+
+  .hero h1 {
+    font-size: 3.25rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .hero-description {
+    font-size: 1.05rem;
+  }
+
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+/* Breakpoint 3: Desktop (>= 1200px) */
+@media (min-width: 75rem) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .hero h1 {
+    font-size: 3.75rem;
+  }
+
+  .benefits-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .benefit-card:nth-child(4) {
+    grid-column: span 1;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
