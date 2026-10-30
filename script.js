@@ -142,12 +142,12 @@ const initCounters = () => {
       const easeOutProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
       const currentVal = Math.floor(easeOutProgress * target);
 
-      counter.textContent = `${prefix}${currentVal.toLocaleString()}${suffix}`;
+      counter.textContent = `${prefix}${currentVal.toLocaleString('es-CO')}${suffix}`;
 
       if (progress < 1) {
         requestAnimationFrame(updateValue);
       } else {
-        counter.textContent = `${prefix}${target.toLocaleString()}${suffix}`;
+        counter.textContent = `${prefix}${target.toLocaleString('es-CO')}${suffix}`;
       }
     };
 
@@ -354,19 +354,32 @@ const initFormValidation = () => {
     // Simulación de respuesta inmediata y renderizado de confirmación en el DOM
     setTimeout(() => {
       const userEmail = emailInput ? emailInput.value.trim() : 'tu correo';
-      const randomCode = Math.floor(1000 + Math.random() * 9000);
+      const randomCode = crypto.getRandomValues(new Uint32Array(1))[0] % 9000 + 1000;
 
+      // Guardar el registro en localStorage (solo nombre, objetivo y código)
+      try {
+        localStorage.setItem('fitzone_registro', JSON.stringify({
+          nombre: nameInput.value.trim(),
+          objetivo: goalSelect.value,
+          codigo: randomCode,
+        }));
+      } catch (err) {
+        console.warn('No se pudo guardar el registro:', err);
+      }
+
+      // La parte fija se escribe con innerHTML y el correo con textContent
       form.innerHTML = `
-        <div class="form-success-card" role="alert" aria-live="assertive">
+        <div class="form-success-card" role="alert">
           <div class="success-icon" aria-hidden="true">✓</div>
           <h3 class="success-title">¡Pase de Cortesía Confirmado!</h3>
           <p class="success-code">#FZ-VIP-${randomCode}</p>
           <p class="success-desc">
-            Hemos reservado tu lugar y enviado las instrucciones de llegada a <strong>${userEmail}</strong>. Preséntate 10 minutos antes en recepción con tu documento de identidad.
+            Hemos reservado tu lugar y enviado las instrucciones de llegada a <strong id="correo-confirmado"></strong>. Preséntate 10 minutos antes en recepción con tu documento de identidad.
           </p>
-          <a href="#hero" class="btn-secondary" style="display: inline-block;">Volver al Inicio</a>
+          <a href="#hero" class="btn-secondary btn-inline">Volver al Inicio</a>
         </div>
       `;
+      document.getElementById('correo-confirmado').textContent = userEmail;
     }, 450);
   });
 };
