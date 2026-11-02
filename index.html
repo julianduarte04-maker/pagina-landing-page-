@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="FitZone es el gimnasio profesional para superar el sedentarismo y ganar fuerza con clases presenciales, cursos de rendimiento y asesoría técnica garantizada.">
+  <meta property="og:title" content="FitZone Gym | Gimnasio Profesional y Clases Presenciales">
+  <meta property="og:description" content="FitZone es el gimnasio profesional para superar el sedentarismo y ganar fuerza con clases presenciales, cursos de rendimiento y asesoría técnica garantizada.">
   <title>FitZone Gym | Gimnasio Profesional y Clases Presenciales</title>
 
   <!-- Google Fonts: Outfit (Títulos) y Plus Jakarta Sans (Texto) -->
@@ -11,10 +13,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Hoja de estilos externa -->
+  <!-- Hoja de estilos externa (ruta relativa para compatibilidad universal: local y servidor) -->
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body style="background-color: #0B0F17; color: #F8FAFC;">
 
   <!-- ========================================================================== -->
   <!-- 1. HEADER Y NAVEGACIÓN -->
@@ -64,7 +66,7 @@
           <!-- Subtítulo -->
           <p class="hero-subtitle">Clases presenciales de élite y cursos estructurados con aforo limitado para profesionales que exigen resultados sin perder tiempo.</p>
 
-          <!-- Descripción breve (23 palabras - máximo 30 palabras) -->
+          <!-- Descripción breve -->
           <p class="hero-description">Supera el sedentarismo y construye un cuerpo ágil con rutinas de 45 minutos, supervisión técnica continua y horarios diseñados para tu ritmo de trabajo.</p>
 
           <!-- Botón CTA principal -->
@@ -176,7 +178,7 @@
     </section>
 
     <!-- ========================================================================== -->
-    <!-- 5. SECCIÓN CLASES Y CURSOS (SIMULACIÓN DE VIDEO SIN SÍMBOLO PLAY) -->
+    <!-- 5. SECCIÓN CLASES Y CURSOS -->
     <!-- ========================================================================== -->
     <section id="clases" class="clases animate-on-scroll" aria-labelledby="clases-title">
       <div class="container">
@@ -355,6 +357,12 @@
           <p class="section-desc">Completa tus datos para emitir tu pase de prueba individual sin costo de inscripción.</p>
 
           <form id="form-registro" novalidate>
+            <!-- Campo honeypot oculto para antispam (debe permanecer vacío para humanos) -->
+            <div style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;" aria-hidden="true">
+              <label for="campo-antispam">No completar este campo</label>
+              <input type="text" id="campo-antispam" name="_gotcha" tabindex="-1" autocomplete="off">
+            </div>
+
             <!-- Campo 1: Nombre Completo -->
             <div class="form-group">
               <label for="nombre" class="form-label">Nombre Completo *</label>
@@ -391,6 +399,9 @@
               <span id="error-terminos" class="form-error" aria-live="polite"></span>
             </div>
 
+            <!-- Contenedor accesible para errores generales de servidor o red -->
+            <div id="error-general" class="form-error" role="alert" aria-live="assertive" style="display: none; margin-bottom: 1.25rem;"></div>
+
             <!-- Botón de Envío -->
             <button type="submit" class="btn-primary btn-submit">Solicitar Mi Pase Gratuito</button>
           </form>
@@ -418,7 +429,7 @@
     </div>
   </footer>
 
-  <!-- Script JS diferido con lógica de validación accesible y animación -->
+  <!-- Script JS diferido con rutas relativas limpias -->
   <script src="script.js" defer></script>
 </body>
 </html>
